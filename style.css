@@ -5,7 +5,7 @@
 }
 
 /*making pending task color yellow*/
-.pending {
+li span.pending {
   color: orange;
 }
 
