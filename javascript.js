@@ -1,49 +1,51 @@
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelector("#new-task").onsubmit = function(event) {
-    event.preventDefault(); // Prevent page refresh
+    event.preventDefault();
 
-    const taskInput = document.querySelector('#task');
-    const taskText = taskInput.value.trim();
-    if (taskText === "") return;
-
-    const prioritySelect = document.querySelector('#priority');
-    const selectedPriority = prioritySelect.value;
+    const task_text = document.querySelector('#task').value.trim();
+    if (task_text === "") return;
 
     const li = document.createElement('li');
 
-    // Task text with priority
+    // Create a span to hold the task text
     const span = document.createElement('span');
-    span.textContent = `${taskText} [${selectedPriority}]`;
+    span.textContent = task_text;
     li.appendChild(span);
 
-    // Pending radio
-    const pendingRadio = document.createElement('input');
-    pendingRadio.type = 'radio';
-    pendingRadio.name = `status-${Date.now()}`;
-    li.appendChild(pendingRadio);
-    li.appendChild(document.createTextNode(' Pending '));
+    // --- Create buttons ---
 
-    // Complete radio
-    const completeRadio = document.createElement('input');
-    completeRadio.type = 'radio';
-    completeRadio.name = pendingRadio.name;
-    li.appendChild(completeRadio);
-    li.appendChild(document.createTextNode(' Complete '));
+    // Complete button
+    const completeBtn = document.createElement('button');
+    completeBtn.textContent = "Complete";
+    completeBtn.classList.add('complete');
+    completeBtn.addEventListener('click', function() {
+      span.classList.toggle('completed');
+    });
+    li.appendChild(completeBtn);
+
+    // Pending button
+    const pendingBtn = document.createElement('button');
+    pendingBtn.textContent = "Pending";
+    pendingBtn.classList.add('pending');
+    pendingBtn.addEventListener('click', function() {
+      span.classList.toggle('pending');
+    });
+    li.appendChild(pendingBtn);
 
     // Remove button
     const removeBtn = document.createElement('button');
-    removeBtn.type = 'button';
-    removeBtn.textContent = 'Remove';
+    removeBtn.textContent = "Remove";
+    removeBtn.classList.add('remove');
+    removeBtn.addEventListener('click', function() {
+      li.remove();
+    });
     li.appendChild(removeBtn);
 
-    // Add task to list
-    document.querySelector('#tasks_list').appendChild(li);
+    // Add the list item to the task list
+    document.querySelector("#tasks_list").appendChild(li);
 
     // Clear input
-    taskInput.value = '';
-
-    // Remove button functionality
-    removeBtn.addEventListener('click', () => li.remove());
+    document.querySelector('#task').value = "";
   };
 });
 
