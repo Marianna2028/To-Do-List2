@@ -9,3 +9,15 @@ li span.pending {
   color: orange;
 }
 
+/* priority status colors*/
+.low-priority {
+  color: lightblue;
+}
+
+.medium-priority {
+  color: yellow;
+}
+
+.high-priority {
+  color: red;
+}
