@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Create Remove button
     const removeBtn = document.createElement('button');
-    removeBtn.type = 'button'; // Important: prevents form submit
+    removeBtn.type = 'button'; // Prevent form submit
     removeBtn.textContent = 'Remove';
     removeBtn.classList.add('remove');
     li.appendChild(removeBtn);
@@ -63,8 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
 });
-
-
 
 
 
