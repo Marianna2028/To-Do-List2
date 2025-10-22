@@ -13,6 +13,19 @@
     </ul>
     <form id = "new-task">
         <input id = "task" autocomplete = "off" autofocus placeholder = "New Task" type = "text">
+    
+      <!--Priority dropdown -->
+      <select id ="priority">
+        <option value = "Low"> Low Priority</option>
+        <option value="Medium">Medium Priority</option>
+        <option value = "High">High Priority</option>
+      </select>
+
+      <!--radio button status -->
+      <label><input type = "radio" name="status" value="Pending" checked</label>
+      <label><input type = "radio" name="status" value="Completed"> </label>  
+
+      
       <input id = "submit" type = "submit">
         
       </form>
