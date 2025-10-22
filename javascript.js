@@ -26,21 +26,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelector("#task").value = '';
 
-   // Remove button functionality
-li.querySelector('.remove').addEventListener('click', function() {
-  li.remove(); 
-});
-
-// Mark as complete button functionality
+  // Mark as complete button functionality
 li.querySelector('.complete').addEventListener('click', function() {
-  li.querySelector('span').classList.remove('pending'); // remove pending class
-  li.querySelector('span').classList.add('completed'); // add completed class
+  const span = li.querySelector('span');
+  span.classList.remove('pending');   // remove pending if present
+  span.classList.add('completed');    // add completed
 });
 
 // Pending button functionality
 li.querySelector('.pending').addEventListener('click', function() {
-  li.querySelector('span').classList.add('pending');      // add pending class
+  const span = li.querySelector('span');
+  span.classList.remove('completed'); // remove completed if present
+  span.classList.add('pending');      // add pending
 });
+
 
   };
 
