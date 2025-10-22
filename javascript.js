@@ -1,22 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
+  let selectedPriority = "Low"; // Default priority
 
+  // Dropdown selection
+  const priorityLinks = document.querySelectorAll('.dropdown-content a');
+  const priorityBtn = document.getElementById('priorityBtn');
+
+  priorityLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectedPriority = this.dataset.priority;
+      priorityBtn.textContent = selectedPriority; // Show selected priority
+    });
+  });
+
+  // Task submission
   document.querySelector("#new-task").onsubmit = function(event) {
-    event.preventDefault(); // Stop page refresh
+    event.preventDefault();
 
     const taskInput = document.querySelector('#task');
     const taskText = taskInput.value.trim();
     if (taskText === "") return;
 
     const li = document.createElement('li');
+
+    // Task text with priority
     const span = document.createElement('span');
-    span.textContent = taskText;
+    span.textContent = `${taskText} [${selectedPriority}]`;
     li.appendChild(span);
 
     // Pending radio
     const pendingRadio = document.createElement('input');
     pendingRadio.type = 'radio';
     pendingRadio.name = `status-${Date.now()}`;
-    pendingRadio.classList.add('pending-radio');
     li.appendChild(pendingRadio);
     li.appendChild(document.createTextNode(' Pending '));
 
@@ -24,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const completeRadio = document.createElement('input');
     completeRadio.type = 'radio';
     completeRadio.name = pendingRadio.name;
-    completeRadio.classList.add('complete-radio');
     li.appendChild(completeRadio);
     li.appendChild(document.createTextNode(' Complete '));
 
@@ -34,29 +48,16 @@ document.addEventListener('DOMContentLoaded', function() {
     removeBtn.textContent = 'Remove';
     li.appendChild(removeBtn);
 
-    // Add to list
+    // Add task to list
     document.querySelector('#tasks_list').appendChild(li);
 
     taskInput.value = '';
 
-    // Radio functionality
-    pendingRadio.addEventListener('change', () => {
-      span.classList.remove('completed');
-      span.classList.add('pending');
-    });
-
-    completeRadio.addEventListener('change', () => {
-      span.classList.remove('pending');
-      span.classList.add('completed');
-    });
-
-    removeBtn.addEventListener('click', () => {
-      li.remove();
-    });
-
+    // Remove button functionality
+    removeBtn.addEventListener('click', () => li.remove());
   };
-
 });
+
 
 
 
