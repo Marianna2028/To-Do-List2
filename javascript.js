@@ -39,7 +39,6 @@ li.querySelector('.complete').addEventListener('click', function() {
 
 // Pending button functionality
 li.querySelector('.pending').addEventListener('click', function() {
-  li.querySelector('span').classList.remove('completed'); // remove completed class
   li.querySelector('span').classList.add('pending');      // add pending class
 });
 
