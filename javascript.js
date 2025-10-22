@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector("#task").value = '';
 
     return false;
+  
     
-    
-}
+};
 });
