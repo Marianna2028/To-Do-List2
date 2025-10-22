@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Complete button
     const completeBtn = document.createElement('button');
     completeBtn.textContent = "Complete";
-    completeBtn.classList.add('complete');
     completeBtn.addEventListener('click', function() {
       span.classList.toggle('completed');
     });
@@ -26,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Pending button
     const pendingBtn = document.createElement('button');
     pendingBtn.textContent = "Pending";
-    pendingBtn.classList.add('pending');
     pendingBtn.addEventListener('click', function() {
       span.classList.toggle('pending');
     });
@@ -35,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Remove button
     const removeBtn = document.createElement('button');
     removeBtn.textContent = "Remove";
-    removeBtn.classList.add('remove');
     removeBtn.addEventListener('click', function() {
       li.remove();
     });
@@ -48,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#task').value = "";
   };
 });
-
 
 
 
