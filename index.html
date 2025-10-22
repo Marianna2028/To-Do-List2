@@ -10,6 +10,17 @@
   <!-- Form to add new tasks -->
   <form id="new-task">
     <input id="task" type="text" placeholder="New Task" autocomplete="off" autofocus>
+
+   <!-- Priority Dropdown -->
+<div class="dropdown">
+  <button type="button" id="priorityBtn">Select Priority</button>
+  <div class="dropdown-content">
+    <a href="#" data-priority="Low">Low</a>
+    <a href="#" data-priority="Medium">Medium</a>
+    <a href="#" data-priority="High">High</a>
+  </div>
+</div>
+
     <input type="submit" value="Add Task">
   </form>
 
