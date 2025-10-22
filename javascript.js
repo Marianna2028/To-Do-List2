@@ -12,25 +12,25 @@ document.addEventListener('DOMContentLoaded', function() {
     span.textContent = task_text;
     li.appendChild(span);
 
-    // --- Create Complete button ---
+    // --- Create buttons ---
+
+    // Complete button
     const completeBtn = document.createElement('button');
     completeBtn.textContent = "Complete";
     completeBtn.addEventListener('click', function() {
-      span.classList.add('completed');
-      span.classList.remove('pending'); // remove pending if previously set
+      span.classList.toggle('completed');
     });
     li.appendChild(completeBtn);
 
-    // --- Create Pending button ---
+    // Pending button
     const pendingBtn = document.createElement('button');
     pendingBtn.textContent = "Pending";
     pendingBtn.addEventListener('click', function() {
-      span.classList.add('pending');
-      span.classList.remove('completed'); // remove completed if previously set
+      span.classList.toggle('pending');
     });
     li.appendChild(pendingBtn);
 
-    // --- Remove button ---
+    // Remove button
     const removeBtn = document.createElement('button');
     removeBtn.textContent = "Remove";
     removeBtn.addEventListener('click', function() {
