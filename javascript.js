@@ -6,8 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const li = document.createElement('li');
     let task_text = document.querySelector('#task').value;
 
-    let new_task_html = 
-      `
+    let new_task_html = `
       <span>${task_text}</span> 
       <button class="remove">Remove</button>
     `;
@@ -17,7 +16,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelector("#task").value = ''; // clear input
 
-    return false; 
+    // Add remove button functionality
+    li.querySelector('.remove').addEventListener('click', function() {
+      li.remove(); // removes the task
+    });
 
-});
+    return false; 
+  }; // <-- close the onsubmit function
+
+}); // <-- close DOMContentLoaded
 
