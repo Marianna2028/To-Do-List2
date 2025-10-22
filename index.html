@@ -7,27 +7,21 @@
 <body>
   <h1>To-Do List</h1>
 
-  <!-- Form to add new tasks -->
   <form id="new-task">
     <input id="task" type="text" placeholder="New Task" autocomplete="off" autofocus>
 
-    <!-- Priority Dropdown -->
-    <div class="dropdown">
-      <button type="button" id="priorityBtn">Select Priority</button>
-      <div class="dropdown-content">
-        <a href="#" data-priority="Low">Low</a>
-        <a href="#" data-priority="Medium">Medium</a>
-        <a href="#" data-priority="High">High</a>
-      </div>
-    </div>
+    <!-- Simple Priority Dropdown -->
+    <select id="priority">
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+    </select>
 
     <input type="submit" value="Add Task">
   </form>
 
-  <!-- Where tasks will appear -->
   <ul id="tasks_list"></ul>
 
-  <!-- Link to JavaScript -->
   <script src="javascript.js"></script>
 </body>
 </html>
