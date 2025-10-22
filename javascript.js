@@ -13,53 +13,49 @@ document.addEventListener('DOMContentLoaded', function() {
     const span = document.createElement('span');
     span.textContent = task_text;
 
-    // Get the priority from the dropdown
-    const priority = document.querySelector('#priority').value;
-    const priorityDropdown = document.querySelector('#priority');
-    const taskInput = document.querySelector('#task');
-
-    // Assign priority class to the span
-    if (priority === 'Low') span.classList.add('low-priority');
-    else if (priority === 'Medium') span.classList.add('medium-priority');
-    else if (priority === 'High') span.classList.add('high-priority');
-
-    //assigned color when user selects the priority 
-    const initalPriority = priorityDropdown.value;
-    if (initialPriority === ('Low') taskInput.style.color = 'lightblue';
-     if (initialPriority === ('Medium') taskInput.style.color = 'yellow';
-     if (initialPriority === ('High') taskInput.style.color = 'red';
-    
-
     // Append the span to the li
     li.appendChild(span);
 
     // Add radio buttons and remove button
-    li.innerHTML += `
-      <input type="radio" name="status-${Date.now()}" class="pending-radio"> Pending
-      <input type="radio" name="status-${Date.now()}" class="complete-radio"> Complete
-      <button class="remove">Remove</button>
-    `;
+    const pendingRadio = document.createElement('input');
+    pendingRadio.type = 'radio';
+    pendingRadio.name = `status-${Date.now()}`;
+    pendingRadio.classList.add('pending-radio');
+    li.appendChild(pendingRadio);
+    li.appendChild(document.createTextNode(' Pending '));
+
+    const completeRadio = document.createElement('input');
+    completeRadio.type = 'radio';
+    completeRadio.name = pendingRadio.name; // same group
+    completeRadio.classList.add('complete-radio');
+    li.appendChild(completeRadio);
+    li.appendChild(document.createTextNode(' Complete '));
+
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'Remove';
+    removeBtn.classList.add('remove');
+    li.appendChild(removeBtn);
 
     // Append li to the task list
-    document.querySelector("#tasks_list").append(li);
+    document.querySelector("#tasks_list").appendChild(li);
 
     // Clear input box
     document.querySelector("#task").value = '';
 
     // Pending radio functionality
-    li.querySelector('.pending-radio').addEventListener('change', function() {
+    pendingRadio.addEventListener('change', function() {
       span.classList.remove('completed');
       span.classList.add('pending');
     });
 
     // Complete radio functionality
-    li.querySelector('.complete-radio').addEventListener('change', function() {
+    completeRadio.addEventListener('change', function() {
       span.classList.remove('pending');
       span.classList.add('completed');
     });
 
     // Remove button functionality
-    li.querySelector('.remove').addEventListener('click', function() {
+    removeBtn.addEventListener('click', function() {
       li.remove();
     });
 
