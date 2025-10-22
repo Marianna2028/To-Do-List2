@@ -26,6 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelector("#task").value = '';
 
+    // Remove button functionality
+li.querySelector('.remove').addEventListener('click', function() {
+  li.remove(); 
+});
+
+
   // Mark as complete button functionality
 li.querySelector('.complete').addEventListener('click', function() {
   const span = li.querySelector('span');
@@ -40,10 +46,6 @@ li.querySelector('.pending').addEventListener('click', function() {
   span.classList.add('pending');      // add pending
 });
 
-// Remove button functionality
-li.querySelector('.remove').addEventListener('click', function() {
-  li.remove(); 
-});
 
     
   };
