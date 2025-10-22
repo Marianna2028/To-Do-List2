@@ -14,8 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create the task item
     let new_task_html = `
       <span>${task_text}</span> 
+      <button class="pending">Pending</button>
       <button class="complete">Mark Complete</button>
       <button class="remove">Remove</button>
+     
     `;
 
     //making the task print/adding it as a list 
