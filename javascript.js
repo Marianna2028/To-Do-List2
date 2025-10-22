@@ -26,15 +26,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelector("#task").value = '';
 
-    // Remove button functionality
-    li.querySelector('.remove').addEventListener('click', function() {
-      li.remove(); 
-    });
+   // Remove button functionality
+li.querySelector('.remove').addEventListener('click', function() {
+  li.remove(); 
+});
 
-    // Mark as complete button functionality
-    li.querySelector('.complete').addEventListener('click', function() {
-      li.querySelector('span').classList.toggle('completed');
-    });
+// Mark as complete button functionality
+li.querySelector('.complete').addEventListener('click', function() {
+  li.querySelector('span').classList.remove('pending'); // remove pending class
+  li.querySelector('span').classList.add('completed'); // add completed class
+});
+
+// Pending button functionality
+li.querySelector('.pending').addEventListener('click', function() {
+  li.querySelector('span').classList.remove('completed'); // remove completed class
+  li.querySelector('span').classList.add('pending');      // add pending class
+});
+
   };
 
 });
