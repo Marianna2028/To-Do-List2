@@ -1,54 +1,45 @@
 document.addEventListener('DOMContentLoaded', function() {
-  
 
   document.querySelector("#new-task").onsubmit = function(event) {
     event.preventDefault(); // prevents page refresh
 
-    //creating a task 
     const li = document.createElement('li');
     const task_text = document.querySelector('#task').value.trim();
-    
-    // don’t add empty tasks
-    if (task_text === "") return; 
+    if (task_text === "") return;
 
-    // Create the task item
-   let new_task_html = `
-  <span>${task_text}</span> 
-  <button class="pending">Pending</button>
-  <button class="complete">Mark Complete</button>
-  <button class="remove">Remove</button>
-`;
+    // Create the task with radio buttons
+    li.innerHTML = `
+      <span>${task_text}</span>
+      <input type="radio" name="status-${Date.now()}" class="pending-radio"> Pending
+      <input type="radio" name="status-${Date.now()}" class="complete-radio"> Complete
+      <button class="remove">Remove</button>
+    `;
 
-
-    //making the task print/adding it as a list 
-    li.innerHTML = new_task_html;
     document.querySelector("#tasks_list").append(li);
-
     document.querySelector("#task").value = '';
 
+    const span = li.querySelector('span');
+
+    // Pending radio functionality
+    li.querySelector('.pending-radio').addEventListener('change', function() {
+      span.classList.remove('completed');
+      span.classList.add('pending');
+    });
+
+    // Complete radio functionality
+    li.querySelector('.complete-radio').addEventListener('change', function() {
+      span.classList.remove('pending');
+      span.classList.add('completed');
+    });
+
     // Remove button functionality
-li.querySelector('.remove').addEventListener('click', function() {
-  li.remove(); 
-});
+    li.querySelector('.remove').addEventListener('click', function() {
+      li.remove();
+    });
 
-  // Mark as complete button functionality
-li.querySelector('.complete').addEventListener('click', function() {
-  const span = li.querySelector('span');
-  span.classList.remove('pending');   // remove pending if present
-  span.classList.add('completed');    // add completed
-});
-
-// Pending button functionality
-li.querySelector('.pending').addEventListener('click', function() {
-  const span = li.querySelector('span');
-  span.classList.remove('completed'); // remove completed if present
-  span.classList.add('pending');      // add pending
-});
-
-
-    
   };
 
 });
+
 
 
