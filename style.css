@@ -4,4 +4,8 @@
   color: green;
 }
 
+/*making pending task color yellow*/
+.pending {
+  color: yellow;
+}
 
