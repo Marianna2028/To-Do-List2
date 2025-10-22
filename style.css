@@ -1,1 +1,7 @@
+/* making completed task color green*/
+.completed {
+  text-decoration: line-through;
+  color: green;
+}
+
 
