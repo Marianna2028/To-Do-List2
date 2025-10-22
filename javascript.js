@@ -15,11 +15,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Get the priority from the dropdown
     const priority = document.querySelector('#priority').value;
+    const priorityDropdown = document.querySelector('#priority');
+    const taskInput = document.querySelector('#task');
 
     // Assign priority class to the span
     if (priority === 'Low') span.classList.add('low-priority');
     else if (priority === 'Medium') span.classList.add('medium-priority');
     else if (priority === 'High') span.classList.add('high-priority');
+
+    //assigned color when user selects the priority 
+    const initalPriority = priorityDropdown.value;
+    if (initialPriority === ('Low') taskInput.style.color = 'lightblue';
+     if (initialPriority === ('Medium') taskInput.style.color = 'yellow';
+     if (initialPriority === ('High') taskInput.style.color = 'red';
+    
 
     // Append the span to the li
     li.appendChild(span);
@@ -57,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
 });
+
 
 
 
