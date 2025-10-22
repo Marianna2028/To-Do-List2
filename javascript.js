@@ -1,7 +1,16 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelector('#form').onsubmit = function() {
-    let msg = document.querySelector('#message').value;
-    alert(msg);
-  };
+
+  document.querySelector("#new-task").onsubmit = function() {
+    const li = document.createElement('li');
+    li.innerHTML = document.querySelector('#task').value;
+
+
+    document.querySelector("#tasks_list").append(li);
+    document.querySelector("task").value = '';
+
+    return false;
+    
+    
+}
 });
