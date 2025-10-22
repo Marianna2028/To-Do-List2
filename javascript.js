@@ -2,27 +2,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Submits task and keeps it on screen
   document.querySelector("#new-task").onsubmit = function(event) {
-    event.preventDefault(); 
+    event.preventDefault(); // Prevent page refresh
+
+    const taskInput = document.querySelector('#task');
+    const taskText = taskInput.value.trim();
+    if (taskText === "") return; // Don't add empty tasks
 
     // Create new list item
     const li = document.createElement('li');
-    const task_text = document.querySelector('#task').value.trim();
-    if (task_text === "") return; 
 
-    // Create a span for the task text
+    // Create a span for task text
     const span = document.createElement('span');
-    span.textContent = task_text;
+    span.textContent = taskText;
     li.appendChild(span);
 
-    // Add Pending radio
+    // Create Pending radio
     const pendingRadio = document.createElement('input');
     pendingRadio.type = 'radio';
-    pendingRadio.name = `status-${Date.now()}`;
+    pendingRadio.name = `status-${Date.now()}`; // Unique per task
     pendingRadio.classList.add('pending-radio');
     li.appendChild(pendingRadio);
     li.appendChild(document.createTextNode(' Pending '));
 
-    // Add Complete radio
+    // Create Complete radio
     const completeRadio = document.createElement('input');
     completeRadio.type = 'radio';
     completeRadio.name = pendingRadio.name;
@@ -30,25 +32,25 @@ document.addEventListener('DOMContentLoaded', function() {
     li.appendChild(completeRadio);
     li.appendChild(document.createTextNode(' Complete '));
 
-    // Add Remove button
+    // Create Remove button
     const removeBtn = document.createElement('button');
+    removeBtn.type = 'button'; // Important: prevents form submit
     removeBtn.textContent = 'Remove';
     removeBtn.classList.add('remove');
     li.appendChild(removeBtn);
 
-    // Append li to the task list
+    // Append li to task list
     document.querySelector("#tasks_list").appendChild(li);
 
-    // Clear input box
-    document.querySelector("#task").value = '';
+    // Clear input
+    taskInput.value = '';
 
-    // Pending radio functionality
+    // Radio button functionality
     pendingRadio.addEventListener('change', function() {
       span.classList.remove('completed');
       span.classList.add('pending');
     });
 
-    // Complete radio functionality
     completeRadio.addEventListener('change', function() {
       span.classList.remove('pending');
       span.classList.add('completed');
@@ -61,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
 });
-
 
 
 
