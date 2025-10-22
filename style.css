@@ -1,10 +1,8 @@
-/* making completed task color green*/
 .completed {
   text-decoration: line-through;
   color: green;
 }
 
-/*making pending task color yellow*/
-li span.pending {
+.pending {
   color: orange;
 }
