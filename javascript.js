@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+  
 
   document.querySelector("#new-task").onsubmit = function(event) {
     event.preventDefault(); // prevents page refresh
