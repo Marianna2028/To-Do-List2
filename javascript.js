@@ -12,11 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create a span for the task text
     const span = document.createElement('span');
     span.textContent = task_text;
-
-    // Append the span to the li
     li.appendChild(span);
 
-    // Add radio buttons and remove button
+    // Add Pending radio
     const pendingRadio = document.createElement('input');
     pendingRadio.type = 'radio';
     pendingRadio.name = `status-${Date.now()}`;
@@ -24,13 +22,15 @@ document.addEventListener('DOMContentLoaded', function() {
     li.appendChild(pendingRadio);
     li.appendChild(document.createTextNode(' Pending '));
 
+    // Add Complete radio
     const completeRadio = document.createElement('input');
     completeRadio.type = 'radio';
-    completeRadio.name = pendingRadio.name; // same group
+    completeRadio.name = pendingRadio.name;
     completeRadio.classList.add('complete-radio');
     li.appendChild(completeRadio);
     li.appendChild(document.createTextNode(' Complete '));
 
+    // Add Remove button
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'Remove';
     removeBtn.classList.add('remove');
@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
     removeBtn.addEventListener('click', function() {
       li.remove();
     });
-
   };
 
 });
+
 
 
 
