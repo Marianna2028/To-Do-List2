@@ -31,7 +31,6 @@ li.querySelector('.remove').addEventListener('click', function() {
   li.remove(); 
 });
 
-
   // Mark as complete button functionality
 li.querySelector('.complete').addEventListener('click', function() {
   const span = li.querySelector('span');
