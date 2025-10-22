@@ -12,25 +12,25 @@ document.addEventListener('DOMContentLoaded', function() {
     span.textContent = task_text;
     li.appendChild(span);
 
-    // --- Create buttons ---
-
-    // Complete button
+    // --- Create Complete button ---
     const completeBtn = document.createElement('button');
     completeBtn.textContent = "Complete";
     completeBtn.addEventListener('click', function() {
-      span.classList.toggle('completed');
+      span.classList.add('completed');
+      span.classList.remove('pending'); // remove pending if previously set
     });
     li.appendChild(completeBtn);
 
-    // Pending button
+    // --- Create Pending button ---
     const pendingBtn = document.createElement('button');
     pendingBtn.textContent = "Pending";
     pendingBtn.addEventListener('click', function() {
-      span.classList.toggle('pending');
+      span.classList.add('pending');
+      span.classList.remove('completed'); // remove completed if previously set
     });
     li.appendChild(pendingBtn);
 
-    // Remove button
+    // --- Remove button ---
     const removeBtn = document.createElement('button');
     removeBtn.textContent = "Remove";
     removeBtn.addEventListener('click', function() {
@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#task').value = "";
   };
 });
+
 
 
 
