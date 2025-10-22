@@ -1,30 +1,41 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-  //submits task and keeps it on screen
+  // Submits task and keeps it on screen
   document.querySelector("#new-task").onsubmit = function(event) {
     event.preventDefault(); 
 
-    //creates new list item 
+    // Create new list item
     const li = document.createElement('li');
     const task_text = document.querySelector('#task').value.trim();
     if (task_text === "") return; 
 
-    // Create the task with radio buttons
-    li.innerHTML = `
-      <span>${task_text}</span>
+    // Create a span for the task text
+    const span = document.createElement('span');
+    span.textContent = task_text;
+
+    // Get the priority from the dropdown
+    const priority = document.querySelector('#priority').value;
+
+    // Assign priority class to the span
+    if (priority === 'Low') span.classList.add('low-priority');
+    else if (priority === 'Medium') span.classList.add('medium-priority');
+    else if (priority === 'High') span.classList.add('high-priority');
+
+    // Append the span to the li
+    li.appendChild(span);
+
+    // Add radio buttons and remove button
+    li.innerHTML += `
       <input type="radio" name="status-${Date.now()}" class="pending-radio"> Pending
       <input type="radio" name="status-${Date.now()}" class="complete-radio"> Complete
       <button class="remove">Remove</button>
     `;
 
-    //shows task in list 
+    // Append li to the task list
     document.querySelector("#tasks_list").append(li);
 
-    //clears input box
+    // Clear input box
     document.querySelector("#task").value = '';
-
-    //gets text element
-    const span = li.querySelector('span');
 
     // Pending radio functionality
     li.querySelector('.pending-radio').addEventListener('change', function() {
@@ -46,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
 });
+
 
 
 
