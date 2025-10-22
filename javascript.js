@@ -1,25 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-  let selectedPriority = "Low"; // Default priority
-
-  // Dropdown selection
-  const priorityLinks = document.querySelectorAll('.dropdown-content a');
-  const priorityBtn = document.getElementById('priorityBtn');
-
-  priorityLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      selectedPriority = this.dataset.priority;
-      priorityBtn.textContent = selectedPriority; // Show selected priority
-    });
-  });
-
-  // Task submission
   document.querySelector("#new-task").onsubmit = function(event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent page refresh
 
     const taskInput = document.querySelector('#task');
     const taskText = taskInput.value.trim();
     if (taskText === "") return;
+
+    const prioritySelect = document.querySelector('#priority');
+    const selectedPriority = prioritySelect.value;
 
     const li = document.createElement('li');
 
@@ -51,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add task to list
     document.querySelector('#tasks_list').appendChild(li);
 
+    // Clear input
     taskInput.value = '';
 
     // Remove button functionality
