@@ -40,7 +40,12 @@ li.querySelector('.pending').addEventListener('click', function() {
   span.classList.add('pending');      // add pending
 });
 
+// Remove button functionality
+li.querySelector('.remove').addEventListener('click', function() {
+  li.remove(); 
+});
 
+    
   };
 
 });
