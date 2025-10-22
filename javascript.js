@@ -2,6 +2,8 @@
 document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelector("#new-task").onsubmit = function() {
+    event.preventDefault();
+
     
     const li = document.createElement('li');
     li.innerHTML = document.querySelector('#task').value;
@@ -11,5 +13,5 @@ document.addEventListener('DOMContentLoaded', function() {
     return false;
   
     
-};
+}
 });
